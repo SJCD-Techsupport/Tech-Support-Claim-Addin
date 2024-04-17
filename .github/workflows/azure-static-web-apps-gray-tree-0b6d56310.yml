@@ -33,7 +33,7 @@ jobs:
           output_location: "dist" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
       - name: 'Print directory'
-        run: sudo apt-get install tree && find . -type d -exec tree -H . -o '{}/tree.html' ;
+        run: sudo apt-get install tree && find . -type d -exec tree -H . -o '{}/tree.html' \;
 
     
   close_pull_request_job:
