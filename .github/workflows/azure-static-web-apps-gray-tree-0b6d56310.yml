@@ -32,12 +32,9 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "dist" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
-      - name: Publish directory tree
-        id: publishdirectorytree
-        uses: actions/upload-artifact@v2
-        with:
-            name: drop
-            path: artifact.zi
+      - name: 'Print directory'
+        run: sudo apt-get install tree && find . -type d -exec tree -H . -o '{}/tree.html' ;
+
     
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
