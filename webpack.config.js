@@ -20,7 +20,7 @@ module.exports = async (env, options) => {
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       vendor: ["react", "react-dom", "core-js", "@fluentui/react", "@fluentui/react-icons"],
-      taskpane: ["./src/index.jsx", "./src/index.html"],
+      index: ["./src/index.jsx", "./src/index.html"],
       commands: ["./src/commands/commands.js","./src/commands/commands.html"],
     },
     output: {
@@ -88,7 +88,7 @@ module.exports = async (env, options) => {
       new HtmlWebpackPlugin({
         filename: "index.html",
         template: "./src/index.html",
-        chunks: ["taskpane", "vendor", "polyfill"],
+        chunks: ["index", "vendor", "polyfill"],
       }),
       new HtmlWebpackPlugin({
         filename: "commands.html",
