@@ -39,12 +39,11 @@ jobs:
     name: Publish directory tree Job
     steps:
       - name: Publish directory tree
-        id: closepullrequest
-        uses: PublishBuildArtifacts@1
+        id: publishdirectorytree
+        uses: actions/upload-artifact@v2
         with:
-          pathToPublish: $(Build.ArtifactStagingDirectory)
-          artifactName: MyBuildOutputs
-          
+            name: drop
+            path: artifact.zip
     
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
