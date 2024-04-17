@@ -86,8 +86,8 @@ module.exports = async (env, options) => {
         ],
       }),
       new HtmlWebpackPlugin({
-        filename: "taskpane.html",
-        template: "./src/taskpane/taskpane.html",
+        filename: "index.html",
+        template: "./src/taskpane/index.html",
         chunks: ["taskpane", "vendor", "polyfill"],
       }),
       new HtmlWebpackPlugin({
