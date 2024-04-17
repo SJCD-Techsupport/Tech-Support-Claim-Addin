@@ -22,7 +22,7 @@ const client = Client.initWithMiddleware({
   authProvider: authProvider,
 });
 
-async function claimEmail() {
+async function claimEmail(event) {
   console.log("Claiming Email...");
   //Get currently selected message reference
   const message = Office.context.mailbox.item;
@@ -53,6 +53,7 @@ async function claimEmail() {
       });
     } catch (error) {
       console.log(error);
+      Office.context.ui.displayDialogAsync("https://www.google.com");
     }
   } else {
     const forward = {
@@ -76,9 +77,11 @@ async function claimEmail() {
       await client.api("/me/messages/" + messageRestID + "/forward").post(forward);
     } catch (error) {
       console.log(error);
+      Office.context.ui.displayDialogAsync("https://www.google.com");
     }
   }
   console.log("Email successfully claimed!");
+  event.complete();
 }
 function getAgentName() {
   let fullName = Office.context.mailbox.userProfile.displayName;
