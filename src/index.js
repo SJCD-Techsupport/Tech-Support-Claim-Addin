@@ -53,7 +53,7 @@ async function claimEmail(event) {
       });
     } catch (error) {
       console.log(error);
-      Office.context.ui.displayDialogAsync("https://www.google.com");
+      
     }
   } else {
     const forward = {
@@ -77,7 +77,6 @@ async function claimEmail(event) {
       await client.api("/me/messages/" + messageRestID + "/forward").post(forward);
     } catch (error) {
       console.log(error);
-      Office.context.ui.displayDialogAsync("https://www.google.com");
     }
   }
   console.log("Email successfully claimed!");

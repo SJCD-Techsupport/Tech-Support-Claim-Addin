@@ -20,8 +20,7 @@ module.exports = async (env, options) => {
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       vendor: ["react", "react-dom", "core-js", "@fluentui/react", "@fluentui/react-icons"],
-      index: ["./src/index.jsx", "./src/index.html"],
-      commands: ["./src/commands/commands.js","./src/commands/commands.html"],
+      index: ["./src/index.jsx", "./src/index.html", "./src/index.js"],
     },
     output: {
       clean: true,
@@ -89,11 +88,6 @@ module.exports = async (env, options) => {
         filename: "index.html",
         template: "./src/index.html",
         chunks: ["index", "vendor", "polyfill"],
-      }),
-      new HtmlWebpackPlugin({
-        filename: "commands.html",
-        template: "./src/commands/commands.html",
-        chunks: ["commands"],
       }),
       new webpack.ProvidePlugin({
         Promise: ["es6-promise", "Promise"],

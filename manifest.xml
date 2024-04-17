@@ -41,8 +41,11 @@
       </Requirements>
       <Hosts>
         <Host xsi:type="MailHost">
+          <Runtimes>
+            <Runtime resid="Taskpane.Url" lifetime="long" />
+          </Runtimes>
           <DesktopFormFactor>
-            <FunctionFile resid="Commands.Url"/>
+            <FunctionFile resid="Taskpane.Url"/>
             <ExtensionPoint xsi:type="MessageReadCommandSurface">
               <OfficeTab id="TabDefault">
                 <Group id="GroupLabel">
@@ -62,6 +65,21 @@
                       <FunctionName>claimEmail</FunctionName>
                     </Action>                  
                   </Control>
+                  <Control xsi:type="Button" id="openTaskPane">
+                    <Label resid="ActionButton.Label"/>
+                    <Supertip>
+                      <Title resid="ActionButton.Label"/>
+                      <Description resid="ActionButton.Tooltip"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.16x16"/>
+                      <bt:Image size="32" resid="Icon.32x32"/>
+                      <bt:Image size="80" resid="Icon.80x80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="Taskpane.Url" />
+                    </Action>                  
+                  </Control>
                 </Group>
               </OfficeTab>
             </ExtensionPoint>
@@ -75,7 +93,6 @@
           <bt:Image id="Icon.80x80" DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="Commands.Url" DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net/commands.html"/>
           <bt:Url id="Taskpane.Url" DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net/index.html"/>
         </bt:Urls>
         <bt:ShortStrings>
