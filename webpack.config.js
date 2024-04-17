@@ -21,7 +21,7 @@ module.exports = async (env, options) => {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       vendor: ["react", "react-dom", "core-js", "@fluentui/react", "@fluentui/react-icons"],
       taskpane: ["./src/index.jsx", "./src/index.html"],
-      commands: "./src/commands/commands.js",
+      commands: ["./src/commands/commands.js","./src/commands/commands.html"],
     },
     output: {
       clean: true,

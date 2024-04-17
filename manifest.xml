@@ -23,7 +23,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net/index.html"/>
+        <SourceLocation DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -76,7 +76,7 @@
         </bt:Images>
         <bt:Urls>
           <bt:Url id="Commands.Url" DefaultValue="https://sjcd-techsupport.azurewebsites.net/commands.html"/>
-          <bt:Url id="Taskpane.Url" DefaultValue="https://sjcd-techsupport.azurewebsites.net/taskpane.html"/>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://sjcd-techsupport.azurewebsites.net/index.html"/>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GroupLabel" DefaultValue="Claim Add-in"/>
