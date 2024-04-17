@@ -1,0 +1,10 @@
+{
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript"
+    ],
+    "staticWebApps.appSubpath": "/src",
+    "staticWebApps.outputSubpath": "/dist"
+  }
+  
