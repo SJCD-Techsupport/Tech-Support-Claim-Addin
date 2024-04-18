@@ -15,12 +15,18 @@ class OfficeAuthProvider {
   }
 }
 
-async function claimEmail(event) {
-  const authProvider = new OfficeAuthProvider();
-  const client = Client.initWithMiddleware({
-    authProvider: authProvider,
-  });
+const authProvider = new OfficeAuthProvider();
+const client = Client.initWithMiddleware({
+  authProvider: authProvider,
+});
 
+async function claimEmail(event) {
+  let consoleMsg = "";
+  if (client == null || client == undefined) {
+    consoleMsg += "Client undefined or null!\n";
+    event.completed();
+    return;
+  }
   //Get currently selected message reference
   const message = Office.context.mailbox.item;
   if (message == undefined || message.internetMessageId.length == 0 || message.itemId.length == 0) return;
@@ -49,7 +55,7 @@ async function claimEmail(event) {
         ],
       });
     } catch (error) {
-      console.log(error);
+      consoleMsg += "Error claiming!";
     }
   } else {
     const forward = {
@@ -72,10 +78,15 @@ async function claimEmail(event) {
       });
       await client.api("/me/messages/" + messageRestID + "/forward").post(forward);
     } catch (error) {
-      console.log(error);
+      consoleMsg += "Error claiming!";
     }
   }
-  console.log("Email successfully claimed!");
+  message.notificationMessages.addAsync("errors", {
+    key: "error",
+    message: consoleMsg,
+    persistent: false,
+    type: Office.MailboxEnums.ItemNotificationMessageType,
+  });
   event.completed();
 }
 function getAgentName() {
