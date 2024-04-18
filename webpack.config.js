@@ -20,7 +20,7 @@ module.exports = async (env, options) => {
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       vendor: ["react", "react-dom", "core-js", "@fluentui/react", "@fluentui/react-icons"],
-      index: ["./src/index.jsx", "./src/index.html", "./src/index.js"],
+      index: ["./src/index.jsx", "./src/index.html", "./src/index.js", "./src/authConfig.js"],
     },
     output: {
       clean: true,
