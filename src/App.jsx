@@ -7,9 +7,7 @@ class App extends React.Component {
     super(props);
   }
   render() {
-    return(
-    <ThemeProvider>
-    </ThemeProvider>);
+    return <h1>Welcome to the claim addin!</h1>;
   }
 }
 
