@@ -4,9 +4,11 @@
  */
 
 import { Client } from "@microsoft/microsoft-graph-client";
-
+import { PublicClientApplication, InteractionType } from "@azure/msal-browser";
+import { AuthCodeMSALBrowserAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/authCodeMsalBrowser";
+import msalConfig from "./authConfig";
 /* global Office */
-Office.onReady();
+
 class OfficeAuthProvider {
   async getAccessToken(AuthenticationProviderOptions) {
     return Office.auth.getAccessToken({
@@ -16,13 +18,31 @@ class OfficeAuthProvider {
     });
   }
 }
+//const authProvider = new OfficeAuthProvider();
+Office.onReady(async (info) => {
+  const msalInstance = new PublicClientApplication(msalConfig);
+  this.msalInstance
+    .ssoSilent({
+      scopes: ["User.Read", "Mail.ReadWrite.Shared"],
+    })
+    .then((result) => {
+      this.msalInstance.setActiveAccount(result.account);
+      console.log(result.account);
+    });
+  const authProvider = new AuthCodeMSALBrowserAuthenticationProvider(msalInstance, {
+    account: this.msalInstance.getActiveAccount(),
+    InteractionType: InteractionType.Popup,
+    scopes: ["User.Read", "Mail.ReadWrite.Shared"],
+  });
 
-const authProvider = new OfficeAuthProvider();
-const client = Client.initWithMiddleware({
-  authProvider: authProvider,
+  const client = Client.initWithMiddleware({
+    authProvider: authProvider,
+  });
+  Office.context.roamingSettings.set("MSGraphClient", client);
 });
 
 async function claimEmail(event) {
+  const client = Office.context.roamingSettings.get("MSGraphClient");
   console.log("Claiming Email...");
   //Get currently selected message reference
   const message = Office.context.mailbox.item;
@@ -53,7 +73,6 @@ async function claimEmail(event) {
       });
     } catch (error) {
       console.log(error);
-      
     }
   } else {
     const forward = {

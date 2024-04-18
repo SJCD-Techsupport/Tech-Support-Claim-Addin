@@ -66,9 +66,9 @@
                     </Action>                  
                   </Control>
                   <Control xsi:type="Button" id="openTaskPane">
-                    <Label resid="ActionButton.Label"/>
+                    <Label resid="OpenButton.Label"/>
                     <Supertip>
-                      <Title resid="ActionButton.Label"/>
+                      <Title resid="OpenButton.Label"/>
                       <Description resid="ActionButton.Tooltip"/>
                     </Supertip>
                     <Icon>
@@ -98,6 +98,7 @@
         <bt:ShortStrings>
           <bt:String id="GroupLabel" DefaultValue="Claim Add-in"/>
           <bt:String id="ActionButton.Label" DefaultValue="Claim Email"/>
+          <bt:String id="OpenButton.Label" DefaultValue="Open Taskpane"/>
         </bt:ShortStrings>
         <bt:LongStrings>
           <bt:String id="ActionButton.Tooltip" DefaultValue="Perform an action when clicked."/>

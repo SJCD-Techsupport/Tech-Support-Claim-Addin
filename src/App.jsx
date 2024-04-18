@@ -7,7 +7,9 @@ class App extends React.Component {
     super(props);
   }
   render() {
-    return <ThemeProvider></ThemeProvider>;
+    return(
+    <ThemeProvider>
+    </ThemeProvider>);
   }
 }
 
