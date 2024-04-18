@@ -4,7 +4,7 @@
  */
 
 /* global Office */
-
+import { Client } from "@microsoft/microsoft-graph-client";
 class OfficeAuthProvider {
   async getAccessToken(AuthenticationProviderOptions) {
     return Office.auth.getAccessToken({
@@ -14,15 +14,17 @@ class OfficeAuthProvider {
     });
   }
 }
-//const authProvider = new OfficeAuthProvider();
+
+const authProvider = new OfficeAuthProvider();
+const client = Client.initWithMiddleware({
+  authProvider: authProvider,
+});
 
 async function claimEmail(event) {
-  const client = Office.context.roamingSettings.get("MSGraphClient");
-  if (client === null) {
-    await Office.addin.showAsTaskpane();
-    claimEmail(event);
+  if (client == null || client == undefined) {
+    event.completed();
+    return;
   }
-  console.log("Claiming Email...");
   //Get currently selected message reference
   const message = Office.context.mailbox.item;
   if (message == undefined || message.internetMessageId.length == 0 || message.itemId.length == 0) return;
@@ -67,7 +69,7 @@ async function claimEmail(event) {
     };
     try {
       //"/users/" + this.sharedMailboxId + "/messages/" + msgRestID + "/forward"
-      client.api("/me/messages/" + messageRestID).update({
+      await client.api("/me/messages/" + messageRestID).update({
         flag: {
           flagStatus: "flagged",
         },
@@ -78,7 +80,7 @@ async function claimEmail(event) {
     }
   }
   console.log("Email successfully claimed!");
-  event.complete();
+  event.completed();
 }
 function getAgentName() {
   let fullName = Office.context.mailbox.userProfile.displayName;
