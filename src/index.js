@@ -18,9 +18,10 @@ class OfficeAuthProvider {
 
 async function claimEmail(event) {
   const client = Office.context.roamingSettings.get("MSGraphClient");
-  if (client === null){
-    Office.addin.showAsTaskpane();
-  } 
+  if (client === null) {
+    await Office.addin.showAsTaskpane();
+    claimEmail(event);
+  }
   console.log("Claiming Email...");
   //Get currently selected message reference
   const message = Office.context.mailbox.item;
