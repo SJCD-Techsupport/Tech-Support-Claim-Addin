@@ -19,9 +19,11 @@ const authProvider = new OfficeAuthProvider();
 const client = Client.initWithMiddleware({
   authProvider: authProvider,
 });
+console.log(client);
 
 async function claimEmail(event) {
   if (client == null || client == undefined) {
+    console.log("client not init...");
     event.completed();
     return;
   }
