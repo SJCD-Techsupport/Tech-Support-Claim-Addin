@@ -24,6 +24,12 @@ async function claimEmail(event) {
   let consoleMsg = "";
   if (client == null || client == undefined) {
     consoleMsg += "Client undefined or null!\n";
+    message.notificationMessages.addAsync("errors", {
+      key: "error",
+      message: consoleMsg,
+      persistent: false,
+      type: Office.MailboxEnums.ItemNotificationMessageType,
+    });
     event.completed();
     return;
   }
