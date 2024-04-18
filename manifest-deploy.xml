@@ -6,11 +6,11 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Tech Support Add-in"/>
   <Description DefaultValue="A template to get started."/>
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/assets/icon-128.png"/>
-  <SupportUrl DefaultValue="https://localhost:3000/index.html"/>
+  <IconUrl DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net/"/>
   <AppDomains>
-    <AppDomain>https://localhost:3000</AppDomain>
+    <AppDomain>https://gray-tree-0b6d56310.5.azurestaticapps.net/</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
@@ -23,7 +23,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3000"/>
+        <SourceLocation DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -88,12 +88,12 @@
       </Hosts>
       <Resources>
         <bt:Images>
-          <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/assets/icon-16.png"/>
-          <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-          <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+          <bt:Image id="Icon.16x16" DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/index.html"/>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://gray-tree-0b6d56310.5.azurestaticapps.net/index.html"/>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GroupLabel" DefaultValue="Claim Add-in"/>
@@ -106,7 +106,7 @@
       </Resources>
       <WebApplicationInfo>
       <Id>3773bcb1-8506-4ed6-92ef-ba4ecd0a31c4</Id>
-      <Resource>api://localhost:3000/3773bcb1-8506-4ed6-92ef-ba4ecd0a31c4</Resource>
+      <Resource>api://gray-tree-0b6d56310.5.azurestaticapps.net/3773bcb1-8506-4ed6-92ef-ba4ecd0a31c4</Resource>
       <Scopes>
         <Scope>Mail.ReadWrite.Shared</Scope>
         <Scope>profile</Scope>

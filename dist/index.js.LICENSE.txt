@@ -6,6 +6,8 @@
  * @version   v4.2.8+1e68dce6
  */
 
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
 /**
  * @license React
  * react-dom.production.min.js

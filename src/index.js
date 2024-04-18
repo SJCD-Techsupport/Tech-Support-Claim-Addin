@@ -7,10 +7,16 @@
 import { Client } from "@microsoft/microsoft-graph-client";
 class OfficeAuthProvider {
   async getAccessToken(AuthenticationProviderOptions) {
-    return Office.auth.getAccessToken({
+    const token = await Office.auth.getAccessToken({
       allowConsentPrompt: true,
       allowSignInPrompt: true,
       forMSGraphAccess: true,
+    });
+    console.log(token);
+    return Office.auth.getAccessToken({
+      allowConsentPrompt: true,
+      allowSignInPrompt: true,
+      forMSGraphAccess: false,
     });
   }
 }
@@ -19,22 +25,12 @@ const authProvider = new OfficeAuthProvider();
 const client = Client.initWithMiddleware({
   authProvider: authProvider,
 });
-
 async function claimEmail(event) {
+  console.log("Claiming email...");
   let consoleMsg = "";
-  if (client == null || client == undefined) {
-    consoleMsg += "Client undefined or null!\n";
-    message.notificationMessages.addAsync("errors", {
-      key: "error",
-      message: consoleMsg,
-      persistent: false,
-      type: Office.MailboxEnums.ItemNotificationMessageType,
-    });
-    event.completed();
-    return;
-  }
   //Get currently selected message reference
   const message = Office.context.mailbox.item;
+  
   if (message == undefined || message.internetMessageId.length == 0 || message.itemId.length == 0) return;
   const comment = "Claiming email:" + message.internetMessageId;
   //TODO: Determine if the message is claimed already
@@ -61,7 +57,7 @@ async function claimEmail(event) {
         ],
       });
     } catch (error) {
-      consoleMsg += "Error claiming!";
+      console.log(error);
     }
   } else {
     const forward = {
@@ -84,7 +80,7 @@ async function claimEmail(event) {
       });
       await client.api("/me/messages/" + messageRestID + "/forward").post(forward);
     } catch (error) {
-      consoleMsg += "Error claiming!";
+      console.log(error);
     }
   }
   message.notificationMessages.addAsync("errors", {
@@ -93,6 +89,7 @@ async function claimEmail(event) {
     persistent: false,
     type: Office.MailboxEnums.ItemNotificationMessageType,
   });
+  
   event.completed();
 }
 function getAgentName() {
