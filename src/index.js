@@ -15,18 +15,12 @@ class OfficeAuthProvider {
   }
 }
 
-const authProvider = new OfficeAuthProvider();
-const client = Client.initWithMiddleware({
-  authProvider: authProvider,
-});
-console.log(client);
-
 async function claimEmail(event) {
-  if (client == null || client == undefined) {
-    console.log("client not init...");
-    event.completed();
-    return;
-  }
+  const authProvider = new OfficeAuthProvider();
+  const client = Client.initWithMiddleware({
+    authProvider: authProvider,
+  });
+
   //Get currently selected message reference
   const message = Office.context.mailbox.item;
   if (message == undefined || message.internetMessageId.length == 0 || message.itemId.length == 0) return;
