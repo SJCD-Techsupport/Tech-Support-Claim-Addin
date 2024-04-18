@@ -19,8 +19,15 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      vendor: ["react", "react-dom", "core-js", "@fluentui/react", "@fluentui/react-icons"],
-      index: ["./src/index.jsx", "./src/index.html", "./src/index.js"],
+      vendor: [
+        "react",
+        "react-dom",
+        "core-js",
+        "@fluentui/react",
+        "@fluentui/react-icons",
+        "@microsoft/microsoft-graph-client",
+      ],
+      index: ["./src/index.jsx", "./src/index.html"],
     },
     output: {
       clean: true,
