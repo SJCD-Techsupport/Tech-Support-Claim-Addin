@@ -27,7 +27,7 @@ module.exports = async (env, options) => {
         "@fluentui/react-icons",
         "@microsoft/microsoft-graph-client",
       ],
-      index: ["./src/index.jsx", "./src/index.html", "./src/index.js"],
+      index: ["./src/index.jsx", "./src/index.js"],
     },
     output: {
       clean: true,
