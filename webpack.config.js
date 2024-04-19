@@ -94,7 +94,7 @@ module.exports = async (env, options) => {
       new HtmlWebpackPlugin({
         filename: "index.html",
         template: "./src/index.html",
-        chunks: ["index", "vendor", "polyfill"],
+        chunks: ["index","vendor", "polyfill"],
       }),
       new webpack.ProvidePlugin({
         Promise: ["es6-promise", "Promise"],
@@ -110,6 +110,9 @@ module.exports = async (env, options) => {
         options: env.WEBPACK_BUILD || options.https !== undefined ? options.https : await getHttpsOptions(),
       },
       port: process.env.npm_package_config_dev_server_port || 3000,
+    },
+    optimization: {
+      minimize: false,
     },
   };
 
