@@ -5,7 +5,7 @@
 
 /* global Office */
 import { Client } from "@microsoft/microsoft-graph-client";
-const console = Window.console;
+const console = window.console;
 class OfficeAuthProvider {
   async getAccessToken(AuthenticationProviderOptions) {
     const tokenPromise = Office.auth.getAccessToken({

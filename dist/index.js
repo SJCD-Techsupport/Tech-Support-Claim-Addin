@@ -11576,7 +11576,7 @@ function _toPrimitive(t, r) {
 
 /* global Office */
 
-var console = Window.console;
+var console = window.console;
 var OfficeAuthProvider = /*#__PURE__*/function () {
   function OfficeAuthProvider() {
     _classCallCheck(this, OfficeAuthProvider);
