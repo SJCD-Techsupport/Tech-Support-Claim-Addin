@@ -11,7 +11,7 @@ class OfficeAuthProvider {
     const tokenPromise = Office.auth.getAccessToken({
       allowConsentPrompt: true,
       allowSignInPrompt: true,
-      forMSGraphAccess: true,
+      forMSGraphAccess: false,
     });
     console.log(tokenPromise);
     return tokenPromise;
@@ -27,7 +27,10 @@ async function claimEmail(event) {
   //Get currently selected message reference
   const message = Office.context.mailbox.item;
   
-  if (message == undefined || message.internetMessageId.length == 0 || message.itemId.length == 0) return;
+  if (message == undefined || message.internetMessageId.length == 0 || message.itemId.length == 0){
+    event.completed();
+    return;
+  }
   const comment = "Claiming email:" + message.internetMessageId;
   //TODO: Determine if the message is claimed already
   //Convert the message EWS ID to REST ID

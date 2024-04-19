@@ -11592,7 +11592,7 @@ var OfficeAuthProvider = /*#__PURE__*/function () {
               tokenPromise = Office.auth.getAccessToken({
                 allowConsentPrompt: true,
                 allowSignInPrompt: true,
-                forMSGraphAccess: true
+                forMSGraphAccess: false
               });
               console.log(tokenPromise);
               return _context.abrupt("return", tokenPromise);
@@ -11626,27 +11626,28 @@ function _claimEmail() {
           consoleMsg = ""; //Get currently selected message reference
           message = Office.context.mailbox.item;
           if (!(message == undefined || message.internetMessageId.length == 0 || message.itemId.length == 0)) {
-            _context2.next = 5;
+            _context2.next = 6;
             break;
           }
+          event.completed();
           return _context2.abrupt("return");
-        case 5:
+        case 6:
           comment = "Claiming email:" + message.internetMessageId; //TODO: Determine if the message is claimed already
           //Convert the message EWS ID to REST ID
           messageRestID = Office.context.mailbox.convertToRestId(message.itemId, Office.MailboxEnums.RestVersion.v2_0); //Check to see if we are in a shared inbox
           if (!message.getSharedPropertiesAsync) {
-            _context2.next = 20;
+            _context2.next = 21;
             break;
           }
-          _context2.prev = 8;
-          _context2.next = 11;
+          _context2.prev = 9;
+          _context2.next = 12;
           return client.api("/users/techsupport@sjcd.edu/" + messageRestID).update({
             flag: {
               flagStatus: "flagged"
             }
           });
-        case 11:
-          _context2.next = 13;
+        case 12:
+          _context2.next = 14;
           return client.api("/users/techsupport@sjcd.edu/" + messageRestID + "/forward").post({
             comment: comment,
             toRecipients: [{
@@ -11656,17 +11657,17 @@ function _claimEmail() {
               }
             }]
           });
-        case 13:
-          _context2.next = 18;
+        case 14:
+          _context2.next = 19;
           break;
-        case 15:
-          _context2.prev = 15;
-          _context2.t0 = _context2["catch"](8);
+        case 16:
+          _context2.prev = 16;
+          _context2.t0 = _context2["catch"](9);
           console.log(_context2.t0);
-        case 18:
-          _context2.next = 31;
+        case 19:
+          _context2.next = 32;
           break;
-        case 20:
+        case 21:
           forward = {
             comment: comment,
             toRecipients: [{
@@ -11676,24 +11677,24 @@ function _claimEmail() {
               }
             }]
           };
-          _context2.prev = 21;
-          _context2.next = 24;
+          _context2.prev = 22;
+          _context2.next = 25;
           return client.api("/me/messages/" + messageRestID).update({
             flag: {
               flagStatus: "flagged"
             }
           });
-        case 24:
-          _context2.next = 26;
+        case 25:
+          _context2.next = 27;
           return client.api("/me/messages/" + messageRestID + "/forward").post(forward);
-        case 26:
-          _context2.next = 31;
+        case 27:
+          _context2.next = 32;
           break;
-        case 28:
-          _context2.prev = 28;
-          _context2.t1 = _context2["catch"](21);
+        case 29:
+          _context2.prev = 29;
+          _context2.t1 = _context2["catch"](22);
           console.log(_context2.t1);
-        case 31:
+        case 32:
           message.notificationMessages.addAsync("errors", {
             key: "error",
             message: consoleMsg,
@@ -11701,11 +11702,11 @@ function _claimEmail() {
             type: Office.MailboxEnums.ItemNotificationMessageType
           });
           event.completed();
-        case 33:
+        case 34:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[8, 15], [21, 28]]);
+    }, _callee2, null, [[9, 16], [22, 29]]);
   }));
   return _claimEmail.apply(this, arguments);
 }
