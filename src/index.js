@@ -5,16 +5,18 @@
 
 /* global Office */
 import { Client } from "@microsoft/microsoft-graph-client";
+const console = window.console;
 class OfficeAuthProvider {
   async getAccessToken(AuthenticationProviderOptions) {
-    return Office.auth.getAccessToken({
+    const tokenPromise = Office.auth.getAccessToken({
       allowConsentPrompt: true,
       allowSignInPrompt: true,
       forMSGraphAccess: true,
     });
+    console.log(tokenPromise);
+    return tokenPromise;
   }
 }
-
 const authProvider = new OfficeAuthProvider();
 const client = Client.initWithMiddleware({
   authProvider: authProvider,
