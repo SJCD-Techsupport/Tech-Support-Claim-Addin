@@ -11716,6 +11716,14 @@ function getAgentName() {
 }
 Office.actions.associate("claimEmail", claimEmail);
 }();
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+!function() {
+"use strict";
+// Module
+var code = (/* unused pure expression or super */ null && (" <!doctype html> <html lang=\"en\" data-framework=\"javascript\"> <head> <meta charset=\"UTF-8\"/> <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/> <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"> <title>Contoso Task Pane Add-in</title> <" + "script src=\"https://appsforoffice.microsoft.com/lib/1/hosted/office.js\"><" + "/script> </head> <body style=\"width:100%;height:100%;margin:0;padding:0\"> <div id=\"container\"></div> <div id=\"tridentmessage\" style=\"display:none;padding:10\"> This add-in will not run in your version of Office. Please upgrade either to perpetual Office 2021 (or later) or to a Microsoft 365 account. </div> <" + "script>if(-1!==navigator.userAgent.indexOf(\"Trident\")||-1!==navigator.userAgent.indexOf(\"Edge\")){var tridentMessage=document.getElementById(\"tridentmessage\"),normalContainer=document.getElementById(\"container\");tridentMessage.style.display=\"block\",normalContainer.style.display=\"none\"}<" + "/script> </body> </html> "));
+// Exports
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((/* unused pure expression or super */ null && (code)));
+}();
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map
